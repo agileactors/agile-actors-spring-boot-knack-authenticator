@@ -3,7 +3,7 @@
 This is a library that extends Spring Boot functionality and introduces an Authenticator that integrates with Knack API.
 
 ## Adding the library to your build
-To add a dependency on Guava using Maven, use the following:
+To add the library as a dependency using Maven, use the following:
 
 ```xml
 <dependency>
@@ -13,7 +13,7 @@ To add a dependency on Guava using Maven, use the following:
 </dependency>
 ```
 
-To add a dependency using Gradle:
+To add it as dependency using Gradle:
 
 ```gradle
 dependencies {
