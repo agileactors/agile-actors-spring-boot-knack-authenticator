@@ -1,4 +1,4 @@
-# Knack Authenticator for Spring Bott
+# Knack Authenticator for Spring Boot
 
 This is a library that extends Spring Boot functionality and introduces an Authenticator that integrates with Knack API.
 
