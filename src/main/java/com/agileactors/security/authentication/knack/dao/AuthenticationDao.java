@@ -19,7 +19,7 @@ public class AuthenticationDao {
   private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   private final AuthenticationProperties authenticationProperties;
-  private final RestTemplate knackRestTemplate;
+  private final RestTemplate knackRestTemplate = new RestTemplate();
 
   public AuthenticationResponseDto authenticate(String username, String password) {
     Map<String, String> credentials = Map.of("email", username, "password", password);
