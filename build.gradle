@@ -8,7 +8,7 @@ plugins {
 description = 'Adds integration with Knack for authentication reasons.'
 
 group = 'com.agileactors'
-version = System.getenv("BUILD_VERSION") ? System.getenv("BUILD_VERSION") : '1.0.0'
+version = System.getenv("BUILD_VERSION") ? System.getenv("BUILD_VERSION") : '1.1.0'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11

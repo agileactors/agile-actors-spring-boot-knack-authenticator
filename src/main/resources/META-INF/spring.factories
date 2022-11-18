@@ -1,5 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.agileactors.security.authentication.knack.autoconfiguration.AuthenticationAutoConfiguration, \
-  com.agileactors.security.authentication.knack.properties.AuthenticationProperties, \
-  com.agileactors.security.authentication.knack.KnackAuthenticationProvider, \
-  com.agileactors.security.authentication.knack.dao.AuthenticationDao
