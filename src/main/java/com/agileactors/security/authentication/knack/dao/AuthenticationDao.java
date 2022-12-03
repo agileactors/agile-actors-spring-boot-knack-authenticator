@@ -1,6 +1,6 @@
 package com.agileactors.security.authentication.knack.dao;
 
-import com.agileactors.security.authentication.knack.dto.knack.AuthenticationResponseDto;
+import com.agileactors.security.authentication.knack.dto.AuthenticationResponseDto;
 import com.agileactors.security.authentication.knack.properties.AuthenticationProperties;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;

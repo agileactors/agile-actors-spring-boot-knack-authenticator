@@ -1,4 +1,4 @@
-package com.agileactors.security.authentication.knack.dto.knack;
+package com.agileactors.security.authentication.knack.dto;
 
 import lombok.Getter;
 

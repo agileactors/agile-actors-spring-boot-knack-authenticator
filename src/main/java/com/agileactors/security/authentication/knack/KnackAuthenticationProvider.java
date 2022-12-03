@@ -1,13 +1,12 @@
 package com.agileactors.security.authentication.knack;
 
 import com.agileactors.security.authentication.knack.dao.AuthenticationDao;
-import com.agileactors.security.authentication.knack.dto.knack.User;
+import com.agileactors.security.authentication.knack.dto.User;
 import com.agileactors.security.authentication.knack.properties.AuthenticationProperties;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,9 +15,9 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @RequiredArgsConstructor
+@Slf4j
 public class KnackAuthenticationProvider implements AuthenticationProvider {
 
-  private final Logger logger = LoggerFactory.getLogger(this.getClass());
   private final AuthenticationDao authenticationDao;
   private final AuthenticationProperties authenticationProperties;
 
@@ -32,13 +31,17 @@ public class KnackAuthenticationProvider implements AuthenticationProvider {
     var authenticationResponse = authenticationDao.authenticate(email, password);
 
     if (!isAccessAllowed(authenticationResponse.getSession().getUser())) {
-      logger.error(email + " not allowed");
+      log.error(email + " not allowed");
       throw new BadCredentialsException("Something was wrong");
     }
 
-    return new UsernamePasswordAuthenticationToken(email, password,
+    var user = authenticationResponse.getSession()
+        .getUser();
+
+    return new KnackAuthenticationToken(email, password,
         authenticationResponse.getSession().getUser().getProfileKeys().stream()
-            .map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+            .map(SimpleGrantedAuthority::new).collect(Collectors.toList()),
+        user.getToken(), user.getId());
   }
 
   private boolean isAccessAllowed(User user) {
