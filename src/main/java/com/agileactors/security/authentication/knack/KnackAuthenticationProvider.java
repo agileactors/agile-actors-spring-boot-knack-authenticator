@@ -31,9 +31,13 @@ public class KnackAuthenticationProvider implements AuthenticationProvider {
     var authenticationResponse = authenticationDao.authenticate(email, password);
 
     if (!isAccessAllowed(authenticationResponse.getSession().getUser())) {
-      log.error(email + " not allowed");
+      log.error(email + " not allowed for profile keys " +
+          authenticationResponse.getSession().getUser().getProfileKeys());
       throw new BadCredentialsException("Something was wrong");
     }
+
+    log.info("User {} access granted with profile keys {}", email,
+        authenticationResponse.getSession().getUser().getProfileKeys());
 
     var user = authenticationResponse.getSession()
         .getUser();
