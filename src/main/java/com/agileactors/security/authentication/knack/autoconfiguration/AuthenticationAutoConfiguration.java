@@ -4,7 +4,6 @@ import com.agileactors.security.authentication.knack.KnackAuthenticationProvider
 import com.agileactors.security.authentication.knack.dao.AuthenticationDao;
 import com.agileactors.security.authentication.knack.properties.AuthenticationProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +27,6 @@ public class AuthenticationAutoConfiguration {
   }
 
   @Bean
-  @ConditionalOnMissingBean(name = "knackRestTemplate")
   public RestTemplate knackRestTemplate(AuthenticationProperties authenticationProperties) {
     return new RestTemplateBuilder()
         .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
