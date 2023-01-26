@@ -5,8 +5,8 @@ import com.agileactors.security.authentication.knack.dto.User;
 import com.agileactors.security.authentication.knack.properties.AuthenticationProperties;
 import java.util.List;
 import java.util.stream.Collectors;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,12 +14,17 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-@RequiredArgsConstructor
-@Slf4j
 public class KnackAuthenticationProvider implements AuthenticationProvider {
 
+  private final static Logger log = LoggerFactory.getLogger(KnackAuthenticationProvider.class);
   private final AuthenticationDao authenticationDao;
   private final AuthenticationProperties authenticationProperties;
+
+  public KnackAuthenticationProvider(AuthenticationDao authenticationDao,
+                                     AuthenticationProperties authenticationProperties) {
+    this.authenticationDao = authenticationDao;
+    this.authenticationProperties = authenticationProperties;
+  }
 
   @Override
   public Authentication authenticate(Authentication authentication) throws AuthenticationException {

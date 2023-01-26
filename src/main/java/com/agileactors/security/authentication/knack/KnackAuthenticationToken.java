@@ -1,14 +1,10 @@
 package com.agileactors.security.authentication.knack;
 
 import java.util.List;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.SpringSecurityCoreVersion;
 
-@Setter
-@Getter
 public class KnackAuthenticationToken extends UsernamePasswordAuthenticationToken {
 
   private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
@@ -26,4 +22,7 @@ public class KnackAuthenticationToken extends UsernamePasswordAuthenticationToke
     this.userId = userId;
   }
 
+  public String getKnackAuthorizationToken() {
+    return knackAuthorizationToken;
+  }
 }

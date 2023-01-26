@@ -3,8 +3,6 @@ package com.agileactors.security.authentication.knack.dao;
 import com.agileactors.security.authentication.knack.dto.AuthenticationResponseDto;
 import com.agileactors.security.authentication.knack.properties.AuthenticationProperties;
 import java.util.Map;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -12,13 +10,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.client.RestTemplate;
 
-@RequiredArgsConstructor
-@Slf4j
 public class AuthenticationDao {
 
+  private final static Logger log = LoggerFactory.getLogger(AuthenticationDao.class);
 
   private final AuthenticationProperties authenticationProperties;
   private final RestTemplate knackRestTemplate;
+
+  public AuthenticationDao(AuthenticationProperties authenticationProperties,
+                           RestTemplate knackRestTemplate) {
+    this.authenticationProperties = authenticationProperties;
+    this.knackRestTemplate = knackRestTemplate;
+  }
 
   public AuthenticationResponseDto authenticate(String username, String password) {
     log.info("Authenticating {}", username);

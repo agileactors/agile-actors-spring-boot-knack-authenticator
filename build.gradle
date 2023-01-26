@@ -3,12 +3,13 @@ plugins {
     id 'maven-publish'
     id 'checkstyle'
     id 'signing'
+    id 'org.graalvm.buildtools.native' version '0.9.19'
 }
 
 description = 'Adds integration with Knack for authentication reasons.'
 
 group = 'com.agileactors'
-version = System.getenv("BUILD_VERSION") ? System.getenv("BUILD_VERSION") : '1.2.1'
+version = System.getenv("BUILD_VERSION") ? System.getenv("BUILD_VERSION") : '1.3.0'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
@@ -21,15 +22,13 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
     api(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
+    annotationProcessor(platform("org.springframework.boot:spring-boot-dependencies:$springBootVersion"))
 
     api 'org.springframework.boot:spring-boot-starter-web'
     api 'org.springframework.boot:spring-boot-starter-security'
-    api 'org.projectlombok:lombok'
 
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-    annotationProcessor 'org.projectlombok:lombok'
 
     runtimeOnly 'com.fasterxml.jackson.core:jackson-annotations'
 }
