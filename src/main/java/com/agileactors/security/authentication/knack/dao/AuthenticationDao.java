@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class AuthenticationDao {
 
-  private final static Logger log = LoggerFactory.getLogger(AuthenticationDao.class);
+  private final Logger log = LoggerFactory.getLogger(AuthenticationDao.class);
 
   private final AuthenticationProperties authenticationProperties;
   private final RestTemplate knackRestTemplate;

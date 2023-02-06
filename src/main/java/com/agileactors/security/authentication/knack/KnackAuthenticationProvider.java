@@ -16,7 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 public class KnackAuthenticationProvider implements AuthenticationProvider {
 
-  private final static Logger log = LoggerFactory.getLogger(KnackAuthenticationProvider.class);
+  private final Logger log = LoggerFactory.getLogger(KnackAuthenticationProvider.class);
   private final AuthenticationDao authenticationDao;
   private final AuthenticationProperties authenticationProperties;
 
