@@ -10,7 +10,7 @@ public class KnackAuthenticationToken extends UsernamePasswordAuthenticationToke
   private static final long serialVersionUID = SpringSecurityCoreVersion.SERIAL_VERSION_UID;
 
   private final transient String knackAuthorizationToken;
-  private final transient String userId;
+  private final String userId;
 
   public KnackAuthenticationToken(Object principal,
                                   Object credentials,
@@ -20,6 +20,10 @@ public class KnackAuthenticationToken extends UsernamePasswordAuthenticationToke
     super(principal, credentials, authorities);
     this.knackAuthorizationToken = knackAuthorizationToken;
     this.userId = userId;
+  }
+
+  public String getUserId() {
+    return userId;
   }
 
   public String getKnackAuthorizationToken() {
